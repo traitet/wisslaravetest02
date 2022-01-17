@@ -31,3 +31,7 @@ Route::prefix('error')->group(function () {
     // Route::get('/delete/{id}', 'App\Http\Controllers\ShippingController@delete')->name('error.delete');
     // Route::get('/create', 'App\Http\Controllers\ShippingController@create')->name('error.create');
 });
+
+Route::get('/errors/index', function () {
+    return view('/errors/index');
+})->name('error');

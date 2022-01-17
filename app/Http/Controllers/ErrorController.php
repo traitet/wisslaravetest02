@@ -14,9 +14,8 @@ class ErrorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-    }
+    {$errors = Error::all();
+        return view('errors.index', compact('errors'));}
 
     /**
      * Show the form for creating a new resource.

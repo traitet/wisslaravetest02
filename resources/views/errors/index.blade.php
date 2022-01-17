@@ -51,26 +51,27 @@
 {{-- ITEMS IN TABLES --}}
 {{-- ============================================================ --}}
 
-                    {{-- @foreach ($contacts as $contact)
+    @foreach ($errors as $error)
         <tr>
-            <td>{{$contact->id}}</td>
-            <td>{{$contact->first_name}} {{$contact->last_name}}</td>
-            <td>{{$contact->email}}</td>
-            <td>{{$contact->job_title}}</td>
-            <td>{{$contact->city}}</td>
-            <td>{{$contact->country}}</td>
-            <td>
-                <a href="{{ route('contacts.edit',$contact->id)}}" class="btn btn-primary">Edit</a>
+            <td>{{$error->id}}</td>
+            <td>{{$error->functionName}}
+            <td>{{$error->message}}</td>
+            <td>{{$error->createdBy}}</td>
+            <td>{{$error->createdDate}}</td>
+            <td>{{$error->createdTime}}</td>
+
+            {{-- <td>
+                <a href="{{ route('errors.edit',$error->id)}}" class="btn btn-primary">Edit</a>
             </td>
             <td>
-                <form action="{{ route('contacts.destroy', $contact->id)}}" method="post">
+                <form action="{{ route('errors.destroy', $error->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
-            </td>
+            </td> --}}
         </tr>
-        @endforeach --}}
+        @endforeach
                 </tbody>
             </table>
             <div>
