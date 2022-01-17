@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-// use App\Http\Requests\StoreErrorRequest;
-// use App\Http\Requests\UpdateErrorRequest;
 use Illuminate\Http\Request;
 use App\Models\Error;
 
@@ -14,6 +11,9 @@ class ErrorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+// ========================================================================
+// SEARCH
+// ========================================================================
     public function index()
     {
         $errors = Error::all();
@@ -23,11 +23,33 @@ class ErrorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function create()
-    // {
-    //     //
-    // }
+// ========================================================================
+// CREATE
+// ========================================================================
+    public function create()
+    {
+        return view('errors.create');
+    }
 
+// ========================================================================
+// STORE = SAVE (CREATE/UPDATE)
+// ========================================================================
+    public function store(Request $request)
+    {
+        $request->validate([
+            'functionName'=>'required',
+            'message'=>'required',
+            'createdBy'=>'required',
+        ]);
+
+        $contact = new Error([
+            'functionName' => $request->get('functionName'),
+            'message' => $request->get('message'),
+            'createdBy' => $request->get('createdBy'),
+        ]);
+        $contact->save();
+        return redirect('/errors')->with('success', 'Contact saved!');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -52,9 +74,14 @@ class ErrorController extends Controller
      * @param  \App\Models\Error  $error
      * @return \Illuminate\Http\Response
      */
-    public function edit(Error $error)
+
+// ========================================================================
+// EDIT
+// ========================================================================
+    public function edit($id)
     {
-        //
+        $error = Error::find($id);
+        return view('errors.edit', compact('error'));
     }
 
     /**
@@ -72,8 +99,15 @@ class ErrorController extends Controller
      * @param  \App\Models\Error  $error
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Error $error)
+
+// ========================================================================
+// DELETE
+// ========================================================================
+    public function destroy($id)
     {
-        //
+        $contact = Error::find($id);
+        $contact->delete();
+
+        return redirect('/errors')->with('success', 'Contact deleted!');
     }
 }

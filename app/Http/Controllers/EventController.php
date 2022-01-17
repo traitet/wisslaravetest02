@@ -11,6 +11,9 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+// ========================================================================
+// SEARCH
+// ========================================================================
     public function index()
     {
         $events = Event::all();
@@ -20,11 +23,33 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function create()
-    // {
-    //     //
-    // }
+// ========================================================================
+// CREATE
+// ========================================================================
+    public function create()
+    {
+        return view('events.create');
+    }
 
+// ========================================================================
+// STORE = SAVE (CREATE/UPDATE)
+// ========================================================================
+    public function store(Request $request)
+    {
+        $request->validate([
+            'functionName'=>'required',
+            'message'=>'required',
+            'createdBy'=>'required',
+        ]);
+
+        $contact = new Event([
+            'functionName' => $request->get('functionName'),
+            'message' => $request->get('message'),
+            'createdBy' => $request->get('createdBy'),
+        ]);
+        $contact->save();
+        return redirect('/events')->with('success', 'Contact saved!');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -49,9 +74,14 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+
+// ========================================================================
+// EDIT
+// ========================================================================
+    public function edit($id)
     {
-        //
+        $event = Event::find($id);
+        return view('events.edit', compact('event'));
     }
 
     /**
@@ -69,8 +99,15 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+
+// ========================================================================
+// DELETE
+// ========================================================================
+    public function destroy($id)
     {
-        //
+        $contact = Event::find($id);
+        $contact->delete();
+
+        return redirect('/events')->with('success', 'Contact deleted!');
     }
 }
