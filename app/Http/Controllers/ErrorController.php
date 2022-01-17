@@ -17,7 +17,7 @@ class ErrorController extends Controller
     public function index()
     {
         $errors = Error::all();
-        return view('index', compact('errors'));}
+        return view('errors.index', compact('errors'));}
     /**
      * Show the form for creating a new resource.
      *

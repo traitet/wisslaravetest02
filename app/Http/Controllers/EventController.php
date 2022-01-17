@@ -14,7 +14,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view('index', compact('events'));}
+        return view('events.index', compact('events'));}
     /**
      * Show the form for creating a new resource.
      *
