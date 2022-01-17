@@ -1,7 +1,13 @@
 <?php
 
-use App\Http\Controllers\ErrorController;
 use Illuminate\Support\Facades\Route;
+
+// ---------------------------------------------------------------------
+// IMPORT CONTROLLER
+// ---------------------------------------------------------------------
+use App\Http\Controllers\ErrorController;
+use App\Http\Controllers\EventController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,16 +31,27 @@ Route::get('/', function () {
 Route::get('/shipping', function () {return view('shipping');})->name('shipping');
 
 // ---------------------------------------------------------------------
-// ROUTE ERROR LOG
+// LINK URL WITH CONTROLLER (ALL FUNCTIONS) ** MUST LINK WITH CONTROLER **
 // ---------------------------------------------------------------------
-Route::prefix('error')->group(function () {
-    Route::get('/index', 'App\Http\Controllers\ShippingController@index')->name('error');
-    // Route::get('/delete/{id}', 'App\Http\Controllers\ShippingController@delete')->name('error.delete');
-    // Route::get('/create', 'App\Http\Controllers\ShippingController@create')->name('error.create');
+Route::resource('errors', ErrorController::class);
+Route::resource('events', EventController::class);
+
+// ---------------------------------------------------------------------
+// NAME = SHORT ROOT CALLED FROM VIEW [ FROM MAIN MENU ]
+// ---------------------------------------------------------------------
+Route::prefix('errors')->group(function () {
+    Route::get('/index', 'App\Http\Controllers\ErrorController@index')->name('errors');
+    // Route::get('/delete/{id}', 'App\Http\Controllers\ErrorController@delete')->name('error.delete');
+    // Route::get('/create', 'App\Http\Controllers\ErrorController@create')->name('error.create');
+});
+
+// ---------------------------------------------------------------------
+// NAME = SHORT ROOT CALLED FROM VIEW [ FROM MAIN MENU ]
+// ---------------------------------------------------------------------
+Route::prefix('events')->group(function () {
+    Route::get('/index', 'App\Http\Controllers\EventController@index')->name('events');
+    // Route::get('/delete/{id}', 'App\Http\Controllers\EventController@delete')->name('event.delete');
+    // Route::get('/create', 'App\Http\Controllers\EventController@create')->name('event.create');
 });
 
 
-// Route::get('errors/index', 'App\Http\Controllers\ShippingController@index')->name('error');
-// Route::get('/errors/index', function () {return view('/errors/index');})->name('error');
-// Route::resource('errors/index', ShippingController::class);
-Route::resource('errors', ErrorController::class);
