@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ErrorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,8 @@ Route::prefix('error')->group(function () {
     // Route::get('/create', 'App\Http\Controllers\ShippingController@create')->name('error.create');
 });
 
-Route::get('/errors/index', function () {
-    return view('/errors/index');
-})->name('error');
+
+// Route::get('errors/index', 'App\Http\Controllers\ShippingController@index')->name('error');
+// Route::get('/errors/index', function () {return view('/errors/index');})->name('error');
+// Route::resource('errors/index', ShippingController::class);
+Route::resource('errors', ErrorController::class);

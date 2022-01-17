@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+// use App\Http\Requests\StoreErrorRequest;
+// use App\Http\Requests\UpdateErrorRequest;
+use Illuminate\Http\Request;
 use App\Models\Error;
-use App\Http\Requests\StoreErrorRequest;
-use App\Http\Requests\UpdateErrorRequest;
 
 class ErrorController extends Controller
 {
@@ -14,18 +15,18 @@ class ErrorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {$errors = Error::all();
-        return view('errors.index', compact('errors'));}
-
+    {
+        $errors = Error::all();
+        return view('index', compact('errors'));}
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -33,10 +34,6 @@ class ErrorController extends Controller
      * @param  \App\Http\Requests\StoreErrorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreErrorRequest $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -67,10 +64,7 @@ class ErrorController extends Controller
      * @param  \App\Models\Error  $error
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateErrorRequest $request, Error $error)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.

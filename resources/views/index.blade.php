@@ -13,7 +13,7 @@
             {{-- ============================================================ --}}
             {{-- HEADER --}}
             {{-- ============================================================ --}}
-            <h1 class="display-1">Error Log Report</h1>
+            <h1 class="display-1">Error Log Report - in Error</h1>
 
             {{-- ============================================================ --}}
             {{-- FILTER AND BUTTON --}}
@@ -51,7 +51,7 @@
 {{-- ITEMS IN TABLES --}}
 {{-- ============================================================ --}}
 
-    @foreach ($errors as $error)
+     @foreach ($errors as $error)
         <tr>
             <td>{{$error->id}}</td>
             <td>{{$error->functionName}}
@@ -60,7 +60,7 @@
             <td>{{$error->createdDate}}</td>
             <td>{{$error->createdTime}}</td>
 
-            {{-- <td>
+             <td>
                 <a href="{{ route('errors.edit',$error->id)}}" class="btn btn-primary">Edit</a>
             </td>
             <td>
@@ -69,9 +69,9 @@
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
-            </td> --}}
+            </td>
         </tr>
-        @endforeach
+    @endforeach
                 </tbody>
             </table>
             <div>
