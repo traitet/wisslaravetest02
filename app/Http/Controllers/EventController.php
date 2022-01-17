@@ -42,13 +42,13 @@ class EventController extends Controller
             'createdBy'=>'required',
         ]);
 
-        $contact = new Event([
+        $event = new Event([
             'functionName' => $request->get('functionName'),
             'message' => $request->get('message'),
             'createdBy' => $request->get('createdBy'),
         ]);
-        $contact->save();
-        return redirect('/events')->with('success', 'Contact saved!');
+        $event->save();
+        return redirect('/events')->with('success', 'Event saved!');
     }
     /**
      * Store a newly created resource in storage.
@@ -87,7 +87,7 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateErrorRequest  $request
+     * @param  \App\Http\Requests\UpdateEventRequest  $request
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
@@ -105,9 +105,9 @@ class EventController extends Controller
 // ========================================================================
     public function destroy($id)
     {
-        $contact = Event::find($id);
-        $contact->delete();
+        $event = Event::find($id);
+        $event->delete();
 
-        return redirect('/events')->with('success', 'Contact deleted!');
+        return redirect('/events')->with('success', 'Event deleted!');
     }
 }
