@@ -23,3 +23,11 @@ Route::get('/', function () {
 // ---------------------------------------------------------------------
 Route::get('/shipping', function () {return view('shipping');})->name('shipping');
 
+// ---------------------------------------------------------------------
+// ROUTE ERROR LOG
+// ---------------------------------------------------------------------
+Route::prefix('error')->group(function () {
+    Route::get('/index', 'App\Http\Controllers\ShippingController@index')->name('error');
+    // Route::get('/delete/{id}', 'App\Http\Controllers\ShippingController@delete')->name('error.delete');
+    // Route::get('/create', 'App\Http\Controllers\ShippingController@create')->name('error.create');
+});
