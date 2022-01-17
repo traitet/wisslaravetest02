@@ -1,0 +1,15 @@
+=========================================================
+(A) Develop function to provide webapi
+=========================================================
+1. create routes (routes/api.php): index,create,delete,store,save,show,show,edit
+2. create model (app/models):
+3. create controller (app/http/controller): implement following route
+
+=========================================================
+(B) Develop function to consume webapi
+=========================================================
+1. create routes (routes/web.php)
+2. create model (app/models)
+3. create controller ()
+4. create view
+4.1 e.g. layout,search screen
