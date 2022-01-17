@@ -1,13 +1,13 @@
 public function update(Request $request, $id)
     {
         $request->validate([
-            'functionId'=>'required',
+            'functionName'=>'required',
             'message'=>'required',
             'createdBy'=>'required'
         ]);
 
         $error = Contact::find($id);
-        $error->functionId =  $request->get('functionId');
+        $error->functionName =  $request->get('functionName');
         $error->message = $request->get('message');
         $error->createdBy = $request->get('createdBy');
         $error->save();

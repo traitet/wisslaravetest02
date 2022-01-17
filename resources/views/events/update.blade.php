@@ -1,13 +1,13 @@
 public function update(Request $request, $id)
     {
         $request->validate([
-            'functionId'=>'required',
+            'functionName'=>'required',
             'message'=>'required',
             'createdBy'=>'required'
         ]);
 
         $event = Contact::find($id);
-        $event->functionId =  $request->get('functionId');
+        $event->functionName =  $request->get('functionName');
         $event->message = $request->get('message');
         $event->createdBy = $request->get('createdBy');
         $event->save();

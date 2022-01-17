@@ -43,8 +43,8 @@
           </div>
 
           <div class="form-group">
-              <label for="email">Created By:</label>
-              <input type="text" class="form-control" name="createby"/>
+              <label for="createdBy">Created By:</label>
+              <input type="text" class="form-control" name="createdBy"/>
           </div>
           <button type="submit" class="btn btn-primary-outline">Add Data</button>
       </form>

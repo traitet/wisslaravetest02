@@ -2,7 +2,7 @@
 @section('main')
 <div class="row">
     <div class="col-sm-8 offset-sm-2">
-        <h1 class="display-3">Update a event</h1>
+        <h1 class="display-1">Update a Event</h1>
 
         @if ($events->any())
         <div class="alert alert-danger">
@@ -18,18 +18,17 @@
             @method('PATCH')
             @csrf
             <div class="form-group">
-
-                <label for="first_name">First Name:</label>
-                <input type="text" class="form-control" name="functionId" value={{ $event->functionId }} />
+                <label for="functionName">Function Name:</label>
+                <input type="text" class="form-control" name="functionName" value={{ $event->functionName }} />
             </div>
 
             <div class="form-group">
-                <label for="last_name">Last Name:</label>
+                <label for="message">Message:</label>
                 <input type="text" class="form-control" name="message" value={{ $event->message }} />
             </div>
 
             <div class="form-group">
-                <label for="email">Email:</label>
+                <label for="createdBy">Created by:</label>
                 <input type="text" class="form-control" name="createdBy" value={{ $event->createdBy }} />
             </div>
             <button type="submit" class="btn btn-primary">Update</button>

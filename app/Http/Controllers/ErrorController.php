@@ -108,6 +108,6 @@ class ErrorController extends Controller
         $contact = Error::find($id);
         $contact->delete();
 
-        return redirect('/errors')->with('success', 'Contact deleted!');
+        return redirect('/errors')->with('success', 'Data deleted!');
     }
 }
