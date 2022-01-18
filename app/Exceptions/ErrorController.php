@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Error;
-// ========================================================================
-// IMPORT FOR CONSUME DATA FROM WEB API
-// ========================================================================
-use GuzzleHttp\Client;
+
 class ErrorController extends Controller
 {
     /**
@@ -19,26 +16,8 @@ class ErrorController extends Controller
 // ========================================================================
     public function index()
     {
-
-// ========================================================================
-// GET DATA FROM WEB API
-// ========================================================================
         $errors = Error::all();
-        return view('errors.index', compact('errors'));
-    }
-
-
-
-
-
-// ========================================================================
-// GET DATA FROM MYSQL DB
-// ========================================================================
-        // $errors = Error::all();
-        // return view('errors.index', compact('errors'));}
-// ========================================================================
-// GET DATA FROM MYSQL DB
-// ========================================================================
+        return view('errors.index', compact('errors'));}
     /**
      * Show the form for creating a new resource.
      *
@@ -47,7 +26,7 @@ class ErrorController extends Controller
 // ========================================================================
 // CREATE
 // ========================================================================
-     function create()
+    public function create()
     {
         return view('errors.create');
     }
@@ -55,7 +34,7 @@ class ErrorController extends Controller
 // ========================================================================
 // STORE = SAVE (CREATE/UPDATE)
 // ========================================================================
-     function store(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'functionName'=>'required',
@@ -84,7 +63,7 @@ class ErrorController extends Controller
      * @param  \App\Models\Error  $error
      * @return \Illuminate\Http\Response
      */
-     function show(Error $error)
+    public function show(Error $error)
     {
         //
     }
@@ -99,7 +78,7 @@ class ErrorController extends Controller
 // ========================================================================
 // EDIT
 // ========================================================================
-     function edit($id)
+    public function edit($id)
     {
         $error = Error::find($id);
         return view('errors.edit', compact('error'));
@@ -124,7 +103,7 @@ class ErrorController extends Controller
 // ========================================================================
 // DELETE
 // ========================================================================
-     function destroy($id)
+    public function destroy($id)
     {
         $contact = Error::find($id);
         $contact->delete();

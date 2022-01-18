@@ -40,7 +40,7 @@
             {{-- ============================================================ --}}
             {{-- CREATE BUTTON --}}
             {{-- ============================================================ --}}
-            <div><a style="margin: 0px;" href="{{ route('events.create')}}" class="btn btn-primary">New data</a></div><br>
+            {{-- <div><a style="margin: 0px;" href="{{ route('events.create')}}" class="btn btn-primary">New data</a></div><br> --}}
             {{-- ============================================================ --}}
             {{-- TABLE --}}
             {{-- ============================================================ --}}
@@ -60,21 +60,19 @@
 {{-- ============================================================ --}}
 {{-- ITEMS IN TABLES --}}
 {{-- ============================================================ --}}
-
-     @foreach ($events as $event)
+    @foreach ($events as $event)
         <tr>
-            <td>{{$event->id}}</td>
+            <td>{{$event->rowid}}</td>
             <td>{{$event->functionName}}
-            <td>{{$event->message}}</td>
-            <td>{{$event->createdBy}}</td>
-            <td>{{$event->createdDate}}</td>
-            <td>{{$event->createdTime}}</td>
-
-             <td>
+            <td>{{$event->description}}</td>
+            <td>{{$event->createby}}</td>
+            <td>{{$event->createdate}}</td>
+            <td>{{$event->createtime}}</td>
+             {{-- <td>
                 <a href="{{ route('events.edit',$event->id)}}" class="btn btn-primary">Edit</a>
-            </td>
+            </td> --}}
             <td>
-                <form action="{{ route('events.destroy', $event->id)}}" method="post">
+                {{-- <form action="{{ route('events.destroy', $event->id)}}" method="post"> --}}
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
@@ -86,4 +84,4 @@
             </table>
             <div>
             </div>
-        @endsection
+@endsection

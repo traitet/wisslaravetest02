@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Event;
+// ========================================================================
+// IMPORT FOR CONSUME DATA FROM WEB API
+// ========================================================================
+use GuzzleHttp\Client;
+
+use function GuzzleHttp\Promise\each;
 
 class EventController extends Controller
 {
@@ -16,8 +22,44 @@ class EventController extends Controller
 // ========================================================================
     public function index()
     {
-        $events = Event::all();
-        return view('events.index', compact('events'));}
+
+        // =================================================================
+        // GET DATA FROM MYSQL
+        // =================================================================
+        // $events = Event::all();
+        // return view('events.index', compact('events'));
+
+        // =================================================================
+        // GET DATA FROM WEB API
+        // =================================================================
+        $client = new Client();
+        $response = $client->request('GET', 'http://10.100.1.94/WISS-API/EventLog/1S%20SRCTBS1A4046');
+        $body = $response->getBody()->getContents();
+        $events = json_decode($body);
+
+        // =================================================================
+        // ECHO DATA FOR CHECKING
+        // =================================================================
+        // foreach ($events as $event)
+        // {
+        //     echo $event->rowid;
+        //     echo $event->functionName;
+        //     echo $event->description;
+        //     echo  nl2br("\n");
+        // }
+        // echo $events[0]->rowid;
+        // echo $events[0]->functionName;
+
+        // =================================================================
+        // RETURN VIEW TO SHOW DATA IN VIEW
+        // =================================================================
+        return view('events.index',compact('events'));
+    }
+
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *

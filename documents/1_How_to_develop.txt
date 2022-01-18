@@ -1,7 +1,7 @@
 =========================================================
 (A) Develop function to provide webapi
 =========================================================
-1. create routes (routes/api.php): index,create,delete,store,save,show,show,edit
+1. create routes (routes/api.php):
 2. create model (app/models):
 3. create controller (app/http/controller): implement following route
 
@@ -10,6 +10,6 @@
 =========================================================
 1. create routes (routes/web.php)
 2. create model (app/models)
-3. create controller ()
-4. create view
+3. create controller ( index,create,delete,store,save,show,show,edit)
+4. create view (index,insert,update)
 4.1 e.g. layout,search screen
